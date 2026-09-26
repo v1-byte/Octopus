@@ -1,0 +1,1 @@
+{"name":"Web adapter smoke test","id":"web-smoke-001","steps":[{"action":"connect"},{"action":"snapshot"},{"action":"action","name":"open_control_center","payload":{"sandbox":true}},{"assert":"connected == true"},{"action":"reset"}]}

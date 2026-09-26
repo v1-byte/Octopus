@@ -1,0 +1,1 @@
+{"version":1,"adapters":["web","unity","unreal","godot","custom"],"sandbox_only":true,"scenario_schema":{"required":["name","steps"]},"replay":{"seeded":true,"max_actions":10000},"telemetry":{"retention":"local-only","max_events":200},"security":{"production_mutation":false}}

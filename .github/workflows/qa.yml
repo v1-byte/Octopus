@@ -1,0 +1,25 @@
+name: Octopus QA Gate
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check JavaScript syntax
+        shell: bash
+        run: |
+          set -e
+          for f in $(find . -name '*.js' -not -path './.git/*'); do node --check "$f"; done
+      - name: Static smoke test
+        run: |
+          test -s index.html
+          test -s manifest.json
+          test -s service-worker.js
+          test -s config/control-center.json
+          grep -q 'controlCenterScreen' index.html
+          grep -q 'OctopusSDK' index.html

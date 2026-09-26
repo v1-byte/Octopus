@@ -19,3 +19,7 @@ window.OCTOPUS_SEARCH_API = 'https://nama-worker.workers.dev/api/search';
 ```
 
 Untuk produksi, sebaiknya ganti `Access-Control-Allow-Origin: *` dengan domain GitHub Pages Anda.
+
+## Mode hybrid
+
+Frontend mencari pada `local-index.json` lebih dulu. Jika proxy tersedia, hasil indeks lokal digabung dengan hasil Brave dan URL duplikat dihapus. Tambahkan dokumen ke file indeks untuk memperluas search tanpa provider; untuk web luas, pasang crawler/indexer sendiri dan tulis hasil normalisasi dengan format `{title,url,description,content,source}`.

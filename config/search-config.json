@@ -1,1 +1,1 @@
-{"provider":"brave","proxy_endpoint":"","supported_types":["web","image","video","news"],"safe_search":"moderate","page_size":10,"note":"Isi proxy_endpoint dengan URL /api/search milik sendiri; jangan masukkan API key ke frontend."}
+{"provider":"hybrid","proxy_endpoint":"","local_index":"search/local-index.json","fallback_provider":"brave","supported_types":["web","image","video","news"],"safe_search":"moderate","page_size":10,"note":"Indeks lokal dipakai lebih dahulu; proxy Brave menjadi fallback. Jangan masukkan API key ke frontend."}

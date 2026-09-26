@@ -9,7 +9,7 @@
     out.innerHTML=symbols.map((item,i)=>'<div class="rng-symbol-row" data-index="'+i+'"><input class="rng-symbol-name" value="'+esc(item.name)+'" aria-label="Nama symbol"><div class="rng-symbol-options">'+item.weights.map((value,j)=>'<label>Opsi '+(j+1)+' · custom<input class="rng-symbol-weight" type="number" min="0" max="100000" step="0.1" value="'+value+'" aria-label="'+esc(item.name)+' opsi '+(j+1)+'"></label>').join('')+'</div><button class="secondary compact rng-remove" data-remove="'+i+'"'+(symbols.length<2?' disabled':'')+'>Hapus</button></div>').join('');
   }
   function readRows(){return [...document.querySelectorAll('.rng-symbol-row')].map(row=>({name:row.querySelector('.rng-symbol-name').value.trim().toUpperCase()||'SYMBOL',weights:[...row.querySelectorAll('.rng-symbol-weight')].map(x=>Math.max(0,Number(x.value)||0))})).filter(x=>x.name)}
-  function analyze(){
+  async function analyze(){
     symbols=readRows();
     const seed=Number($('symbolRngSeed').value)||12345,samples=Math.min(100000,Math.max(1000,Number($('symbolRngSamples').value)||10000)),results=[];
     for(let option=0;option<5;option++){
@@ -19,8 +19,8 @@
       for(let draw=0;draw<samples;draw++){let cursor=next()*total,picked=weights.length-1;for(let i=0;i<weights.length;i++){cursor-=weights[i];if(cursor<0){picked=i;break}}counts[picked]++}
       results.push({option:option+1,weights,total,samples,counts});
     }
-    const payload={scope:'local-sandbox-only',mode:'custom-symbol-options',seed,samples,symbols,results,created_at:new Date().toISOString()};
-    localStorage.setItem('octopus_symbol_rng_settings',JSON.stringify({seed,samples,symbols}));localStorage.setItem('octopus_symbol_rng_last',JSON.stringify(payload));const applied=$('symbolRngApplied');if(applied)applied.textContent='APPLIED · '+symbols.length+' symbol · konfigurasi custom aktif';renderResult(payload);
+    const payload={scope:'authorized-live-test',mode:'live-test',apply_mode:'custom-sdk',seed,samples,symbols,results,created_at:new Date().toISOString()};
+    let liveMessage='LIVE TEST ADAPTER: belum terhubung; hasil lokal saja';try{if(window.OctopusLiveTestSDK?.status().registered){const response=await window.OctopusLiveTestSDK.applyProfile(payload);liveMessage='LIVE TEST PROFILE APPLIED'+(response?.message?' · '+response.message:'')}}catch(error){liveMessage='LIVE APPLY GAGAL: '+error.message}localStorage.setItem('octopus_symbol_rng_settings',JSON.stringify({seed,samples,symbols}));localStorage.setItem('octopus_symbol_rng_last',JSON.stringify(payload));const applied=$('symbolRngApplied');if(applied)applied.textContent='APPLIED · '+symbols.length+' symbol · konfigurasi custom aktif';const live=$('symbolRngLiveStatus');if(live)live.textContent=liveMessage;renderResult(payload);
   }
   function renderResult(payload){
     const out=$('symbolRngResult');if(!out)return;

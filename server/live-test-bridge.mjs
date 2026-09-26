@@ -12,7 +12,7 @@ const SESSION_TTL_MS=15*60*1000;
 const attempts=new Map();
 if(!OPERATOR_PASSWORD||!SESSION_SECRET)throw new Error('LIVE_TEST_OPERATOR_PASSWORD and LIVE_TEST_SESSION_SECRET are required');
 function send(res,status,data,extra={}){const body=JSON.stringify(data);res.writeHead(status,{'content-type':'application/json; charset=utf-8','cache-control':'no-store',...extra});res.end(body)}
-function cors(req,res){const origin=req.headers.origin;if(ALLOWED_ORIGIN&&origin===ALLOWED_ORIGIN)res.setHeader('access-control-allow-origin',origin);res.setHeader('access-control-allow-credentials','true');res.setHeader('vary','Origin')}
+function cors(req,res){const origin=req.headers.origin;if(ALLOWED_ORIGIN&&origin===ALLOWED_ORIGIN){res.setHeader('access-control-allow-origin',origin);res.setHeader('access-control-allow-methods','GET,POST,OPTIONS');res.setHeader('access-control-allow-headers','content-type');}res.setHeader('access-control-allow-credentials','true');res.setHeader('vary','Origin')}
 function cookie(req,name){const value=String(req.headers.cookie||'').split(';').map(x=>x.trim()).find(x=>x.startsWith(name+'='));return value?decodeURIComponent(value.slice(name.length+1)):''}
 function digest(value){return crypto.createHmac('sha256',SESSION_SECRET).update(value).digest('hex')}
 function safeEqual(a,b){const aa=Buffer.from(String(a));const bb=Buffer.from(String(b));return aa.length===bb.length&&crypto.timingSafeEqual(aa,bb)}

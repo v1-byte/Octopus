@@ -1,1 +1,1 @@
-{"reels":["3x3","5x3","6x5"],"default_bet":1,"default_seed":12345,"wild":"WILD","scatter":"SCATTER","bonus_trigger":3,"paytable_notes":"Nilai payout hanya contoh sandbox; masukkan paytable game milik sendiri."}
+{"reels":["3x3","5x3","6x5"],"default_bet":1,"default_seed":12345,"wild":"WILD","scatter":"SCATTER","bonus_trigger":3,"free_spin_rounds":5,"bonus_multiplier":2,"payline_default":"0,0,0,0,0;1,1,1,1,1;2,2,2,2,2","paytable_notes":"Nilai payout hanya contoh sandbox; masukkan paytable game milik sendiri."}

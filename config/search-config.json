@@ -1,0 +1,1 @@
+{"provider":"brave","proxy_endpoint":"","supported_types":["web","image","video","news"],"safe_search":"moderate","page_size":10,"note":"Isi proxy_endpoint dengan URL /api/search milik sendiri; jangan masukkan API key ke frontend."}

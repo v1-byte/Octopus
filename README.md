@@ -13,8 +13,9 @@ Octopus adalah prototype **PWA mobile-first** untuk riset dan pengujian game yan
 - Audit konektivitas pasif untuk endpoint milik sendiri; tidak melakukan brute force atau manipulasi produksi.
 - Penyimpanan IndexedDB dengan fallback LocalStorage.
 - `manifest.json` dan `service-worker.js` untuk instalasi PWA/offline shell.
-- Search Engine MVP: search bar, tab Web/Gambar/Video/Berita, autocomplete dari riwayat, favorit, dan pagination.
+- Search Engine hybrid: indeks lokal + fallback Brave, tab Web/Gambar/Video/Berita, filter waktu/bahasa/Safe Search, autocomplete, favorit, dan pagination.
 - Proxy search Cloudflare Worker di `search/worker.js` agar API key provider tidak masuk ke frontend.
+- Browser dasar: tab, address bar, back/forward, reload, dan riwayat tab lokal.
 
 ## Catatan spesifikasi lengkap
 

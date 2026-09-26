@@ -23,3 +23,11 @@ Untuk produksi, sebaiknya ganti `Access-Control-Allow-Origin: *` dengan domain G
 ## Mode hybrid
 
 Frontend mencari pada `local-index.json` lebih dulu. Jika proxy tersedia, hasil indeks lokal digabung dengan hasil Brave dan URL duplikat dihapus. Tambahkan dokumen ke file indeks untuk memperluas search tanpa provider; untuk web luas, pasang crawler/indexer sendiri dan tulis hasil normalisasi dengan format `{title,url,description,content,source}`.
+
+## Tipe pencarian dan filter
+
+Worker mendukung `web`, `image`, `video`, dan `news`, plus filter `freshness`, `country`, `search_lang`, dan `safesearch`. Frontend menggabungkan hasil indeks lokal dengan Brave lalu menghapus URL duplikat.
+
+## Browser dasar
+
+`core/browser-core.js` menyediakan tab lokal, address bar, navigasi dasar, reload, riwayat tab, dan pembukaan halaman melalui iframe. Sebagian situs menolak iframe melalui header keamanan; untuk situs tersebut gunakan tautan hasil pencarian yang membuka tab browser baru.

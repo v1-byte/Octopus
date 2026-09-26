@@ -41,6 +41,10 @@ HTTP publik, IP privat, file URL, dan target yang tidak valid ditolak. Tool tida
 
 Dilarang menggunakan Octopus untuk cheat, botting, memanipulasi RNG/hasil game pihak lain, mencuri akun/token, bypass pembayaran, mengubah saldo, mengambil data pemain, atau mengganggu availability layanan.
 
+## RNG audit sandbox
+
+RNG audit hanya menjalankan generator dan analisis statistik secara lokal dengan seed yang dapat direproduksi. Fitur ini tidak mengirim perubahan RNG, hasil, saldo, taruhan, atau konfigurasi ke endpoint game; hasil statistik adalah screening QA, bukan bukti fairness produksi atau prediksi hasil.
+
 ## Native adapter boundary
 
 Adapter Unity, Unreal, Godot, dan Custom adalah contract sandbox sampai dipasang ke build game milik sendiri. Tidak ada klaim bahwa adapter tersebut dapat menginspeksi game pihak ketiga secara otomatis.

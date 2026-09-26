@@ -1,0 +1,1 @@
+{"symbol_visual":{"width":64,"height":64,"scale":1,"opacity":1,"layer":0,"animation":"IDLE"},"rule":{"logic":"AND","count_mode":"EXACT","position":"RANDOM","duration_ms":1000,"delay_ms":0},"audit":{"allowed_checks":["https","cors","auth-status","headers","schema","timing"]}}

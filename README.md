@@ -54,3 +54,5 @@ A/C Studio sekarang memiliki **inspection gate** dengan kode lock per sesi, cons
 ## Private-owner enforcement
 
 Operation policy juga dipasang di SDK untuk memblokir action mutasi walaupun UI dimodifikasi. Untuk APK, tetap wajib menambahkan owner login, device binding, signed challenge, entitlement server-side, revocation, dan remote kill switch seperti dijelaskan di `RELEASE_SECURITY.md`.
+
+- Custom Live Test SDK: Apply dapat menerapkan profil ke test mode server sendiri melalui adapter terdaftar; tanpa adapter, tidak ada perubahan live.

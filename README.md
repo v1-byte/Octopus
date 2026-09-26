@@ -18,6 +18,7 @@ Octopus adalah prototype **PWA mobile-first** untuk riset dan pengujian game yan
 - Browser dasar: tab, address bar, back/forward, reload, dan riwayat tab lokal.
 - API Analyzer lanjutan: request builder, headers, body, timeout, retry, response schema, dan network log.
 - Game math simulator: paytable, paylines, wild, scatter, bonus, free spin, seeded RNG, RTP, hit rate, dan replay log.
+- RNG audit sandbox: distribusi lokal reproducible, chi-square screening, bucket deviation, dan replay seed tanpa menulis ke endpoint game.
 - Symbol Engine lengkap: transform visual, animation, sound, layer, opacity, lock, dan preset lokal.
 - Rule Engine kompleks: AND/OR/IF-THEN, count modes, custom position, visual/audio timing, preset, dan validasi.
 - Security Audit pasif: HTTPS, CORS, auth-status, schema, security headers, timing, dan batasan audit.

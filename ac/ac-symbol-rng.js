@@ -6,7 +6,7 @@
   function rng(seed){let a=seed>>>0;return()=>{a=(a+0x6D2B79F5)>>>0;let t=a;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296}}
   function renderRows(){
     const out=$('symbolRngRows');if(!out)return;
-    out.innerHTML=symbols.map((item,i)=>'<div class="rng-symbol-row" data-index="'+i+'"><input class="rng-symbol-name" value="'+esc(item.name)+'" aria-label="Nama symbol"><div class="rng-symbol-options">'+item.weights.map((value,j)=>'<label>Opsi '+(j+1)+'<input class="rng-symbol-weight" type="number" min="0" max="100000" step="0.1" value="'+value+'" aria-label="'+esc(item.name)+' opsi '+(j+1)+'"></label>').join('')+'</div><button class="secondary compact rng-remove" data-remove="'+i+'"'+(symbols.length<2?' disabled':'')+'>Hapus</button></div>').join('');
+    out.innerHTML=symbols.map((item,i)=>'<div class="rng-symbol-row" data-index="'+i+'"><input class="rng-symbol-name" value="'+esc(item.name)+'" aria-label="Nama symbol"><div class="rng-symbol-options">'+item.weights.map((value,j)=>'<label>Opsi '+(j+1)+' · custom<input class="rng-symbol-weight" type="number" min="0" max="100000" step="0.1" value="'+value+'" aria-label="'+esc(item.name)+' opsi '+(j+1)+'"></label>').join('')+'</div><button class="secondary compact rng-remove" data-remove="'+i+'"'+(symbols.length<2?' disabled':'')+'>Hapus</button></div>').join('');
   }
   function readRows(){return [...document.querySelectorAll('.rng-symbol-row')].map(row=>({name:row.querySelector('.rng-symbol-name').value.trim().toUpperCase()||'SYMBOL',weights:[...row.querySelectorAll('.rng-symbol-weight')].map(x=>Math.max(0,Number(x.value)||0))})).filter(x=>x.name)}
   function analyze(){
@@ -19,8 +19,8 @@
       for(let draw=0;draw<samples;draw++){let cursor=next()*total,picked=weights.length-1;for(let i=0;i<weights.length;i++){cursor-=weights[i];if(cursor<0){picked=i;break}}counts[picked]++}
       results.push({option:option+1,weights,total,samples,counts});
     }
-    const payload={scope:'local-sandbox-only',seed,samples,symbols,results,created_at:new Date().toISOString()};
-    localStorage.setItem('octopus_symbol_rng_settings',JSON.stringify({seed,samples,symbols}));localStorage.setItem('octopus_symbol_rng_last',JSON.stringify(payload));renderResult(payload);
+    const payload={scope:'local-sandbox-only',mode:'custom-symbol-options',seed,samples,symbols,results,created_at:new Date().toISOString()};
+    localStorage.setItem('octopus_symbol_rng_settings',JSON.stringify({seed,samples,symbols}));localStorage.setItem('octopus_symbol_rng_last',JSON.stringify(payload));const applied=$('symbolRngApplied');if(applied)applied.textContent='APPLIED · '+symbols.length+' symbol · konfigurasi custom aktif';renderResult(payload);
   }
   function renderResult(payload){
     const out=$('symbolRngResult');if(!out)return;

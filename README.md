@@ -16,6 +16,8 @@ Octopus adalah prototype **PWA mobile-first** untuk riset dan pengujian game yan
 - Search Engine hybrid: indeks lokal + fallback Brave, tab Web/Gambar/Video/Berita, filter waktu/bahasa/Safe Search, autocomplete, favorit, dan pagination.
 - Proxy search Cloudflare Worker di `search/worker.js` agar API key provider tidak masuk ke frontend.
 - Browser dasar: tab, address bar, back/forward, reload, dan riwayat tab lokal.
+- API Analyzer lanjutan: request builder, headers, body, timeout, retry, response schema, dan network log.
+- Game math simulator: paytable, paylines, wild, scatter, bonus, free spin, seeded RNG, RTP, hit rate, dan replay log.
 
 ## Catatan spesifikasi lengkap
 

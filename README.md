@@ -47,3 +47,8 @@ Tool ini ditujukan untuk **pentest, debugging, dan riset game milik sendiri**. J
 ## Batasan inspeksi dan lock A/C
 
 A/C Studio sekarang memiliki **inspection gate** dengan kode lock per sesi, consent eksplisit, target HTTPS/localhost saja, mode adapter read-only, blokir action mutasi, serta redaksi header sensitif di log. Detail batasan ada di [`SAFETY_BOUNDARIES.md`](SAFETY_BOUNDARIES.md). Lock frontend adalah guardrail, bukan pengganti autentikasi server.
+
+
+## Private-owner enforcement
+
+Operation policy juga dipasang di SDK untuk memblokir action mutasi walaupun UI dimodifikasi. Untuk APK, tetap wajib menambahkan owner login, device binding, signed challenge, entitlement server-side, revocation, dan remote kill switch seperti dijelaskan di `RELEASE_SECURITY.md`.

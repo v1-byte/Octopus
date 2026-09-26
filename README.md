@@ -42,3 +42,8 @@ Server game Anda perlu mengizinkan origin aplikasi dan mengatur autentikasi sesu
 ## Batasan dan disclaimer
 
 Tool ini ditujukan untuk **pentest, debugging, dan riset game milik sendiri**. Jangan gunakan untuk mengambil token, membypass autentikasi, memprediksi atau memanipulasi RNG, mengubah hasil game pihak lain, atau mengakses sistem tanpa izin.
+
+
+## Batasan inspeksi dan lock A/C
+
+A/C Studio sekarang memiliki **inspection gate** dengan kode lock per sesi, consent eksplisit, target HTTPS/localhost saja, mode adapter read-only, blokir action mutasi, serta redaksi header sensitif di log. Detail batasan ada di [`SAFETY_BOUNDARIES.md`](SAFETY_BOUNDARIES.md). Lock frontend adalah guardrail, bukan pengganti autentikasi server.
